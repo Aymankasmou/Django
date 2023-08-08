@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+{% load static %}  
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Instagram Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fafafa;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        
+        .login-container {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+            width: 320px;
+            text-align: center;
+        }
+        
+        .logo {
+            width: 60px;
+            margin-bottom: 20px;
+        }
+        
+        form {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 15px;
+        }
+        
+        input {
+            padding: 10px;
+            border: 1px solid #dbdbdb;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+        
+        .Save {
+            background-color: #3897f0;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            border-radius: 4px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        
+        button:hover {
+            background-color: #3578e5;
+        }
+        
+        .divider {
+            margin: 10px 0;
+            border-top: 1px solid #dbdbdb;
+        }
+        
+        .signup-link {
+            font-size: 12px;
+            color: #999;
+        }
+        
+        .signup-link a {
+            color: #3897f0;
+            text-decoration: none;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="login-container">
+        <img src="{% static 'image/instagram.png' %}" alt="Instagram Logo" class="logo"> 
+
+        <form method="POST">
+            {% csrf_token %}
+            <input type="text" name="username" id="username"  placeholder="Username or Email">
+            <input type="password" name="password" id="password"  placeholder="password">
+            <input type="submit" name="Save" class="Save"  placeholder="Save" value="Save">
+        </form>
+        
+        <div class="divider"></div>
+        <div class="signup-link">
+            Don't have an account? <a href="#">Sign up</a>
+        </div>
+    </div>
+</body>
+</html>
+
+
+{% endblock content %}
+
+<!-- 
+<form action="POST">
+    {% csrf_token %}
+    <input type="text" id="username" name="username" placeholder="Username or Email">
+    <input type="password" id="password"placeholder="Password">
+    <input type="submit" value="Log in">
+</form> -->
